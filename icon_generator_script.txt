@@ -1,0 +1,66 @@
+// PWA Icon Generator Script
+// This script helps generate all required PWA icons from a single source image
+
+const iconSizes = [
+  { size: 16, name: 'icon-16x16.png' },
+  { size: 32, name: 'icon-32x32.png' },
+  { size: 72, name: 'icon-72x72.png' },
+  { size: 96, name: 'icon-96x96.png' },
+  { size: 128, name: 'icon-128x128.png' },
+  { size: 144, name: 'icon-144x144.png' },
+  { size: 152, name: 'icon-152x152.png' },
+  { size: 180, name: 'icon-180x180.png' },
+  { size: 192, name: 'icon-192x192.png' },
+  { size: 384, name: 'icon-384x384.png' },
+  { size: 512, name: 'icon-512x512.png' }
+];
+
+// If you have Node.js and Sharp installed, you can use this script:
+/*
+const sharp = require('sharp');
+const fs = require('fs');
+const path = require('path');
+
+async function generateIcons() {
+  const sourceImage = 'source-logo.png'; // Your source image (512x512 recommended)
+  const outputDir = 'icons';
+
+  // Create icons directory if it doesn't exist
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir);
+  }
+
+  for (const icon of iconSizes) {
+    await sharp(sourceImage)
+      .resize(icon.size, icon.size)
+      .png()
+      .toFile(path.join(outputDir, icon.name));
+    
+    console.log(`Generated ${icon.name}`);
+  }
+
+  console.log('All icons generated successfully!');
+}
+
+generateIcons().catch(console.error);
+*/
+
+// Alternative: Manual icon creation instructions
+console.log(`
+PWA Icon Generation Instructions:
+================================
+
+1. Create a high-quality logo (512x512px minimum)
+2. Use an online tool like:
+   - https://realfavicongenerator.net/
+   - https://www.favicon-generator.org/
+   - https://favicon.io/
+
+3. Generate the following sizes and save in 'icons/' folder:
+   ${iconSizes.map(icon => `   - ${icon.name} (${icon.size}x${icon.size}px)`).join('\n')}
+
+4. Or use image editing software to manually resize your logo
+
+5. Ensure all icons are PNG format with transparent background
+6. Test your PWA icons using Chrome DevTools > Application > Manifest
+`);
